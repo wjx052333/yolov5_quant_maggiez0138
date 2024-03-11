@@ -281,7 +281,7 @@ def export_onnx(model, onnx_filename, batch_onnx, dynamic_shape):
         torch.onnx.export(model, dummy_input, onnx_filename, verbose=False, opset_version=13, input_names=['images'],
                           output_names= ['output_0', 'output_1', 'output_2'],
                           dynamic_axes={'images': {0: 'batch', 2: 'height', 3: 'width'}} if dynamic_shape else None,
-                          enable_onnx_checker=False, do_constant_folding=True)
+                          do_constant_folding=True) #enable_onnx_checker=False, 
 
         # Checks
         onnx_model = onnx.load(onnx_filename)  # load onnx model
